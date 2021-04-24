@@ -125,6 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   smoothTime: 0.125
+  fakeWall: {fileID: 766967269870464736, guid: 8ac5cc76f7a80e2468f12aa7b5f0cff4, type: 3}
 --- !u!50 &2538265492581757974
 Rigidbody2D:
   serializedVersion: 4

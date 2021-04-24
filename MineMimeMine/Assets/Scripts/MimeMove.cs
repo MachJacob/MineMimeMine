@@ -8,6 +8,8 @@ public class MimeMove : MonoBehaviour
     public float smoothTime = 0.125f;
     private Rigidbody2D rb;
     private Vector3 vel;
+
+    public GameObject fakeWall;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,5 +25,14 @@ public class MimeMove : MonoBehaviour
         Vector2 targetVel = new Vector2(horVel, vertVel);
 
         rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVel, ref vel, smoothTime);
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            Vector3 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            dir.z = 0;
+            dir.Normalize();
+            GameObject newWall = Instantiate(fakeWall, transform.position + (1.1f * dir), Quaternion.identity);
+            newWall.GetComponent<WallFake>().SetDuration(5);
+        }
     }
 }
